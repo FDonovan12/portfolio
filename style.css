@@ -6,6 +6,9 @@
     transition-duration: 0.5s, 0.5s;
     transition-property: all;
 }
+body {
+    background-color: var(--grey-color);
+}
 a {
     color: black !important;
     text-decoration: none !important;
@@ -20,6 +23,7 @@ nav > a[href]:hover {
 li > a[href]:hover > div {
     background-color: var(--grey-color);
     border-radius: 0.3rem;
+    color: var(--primary-color);
 }
 header {
     background-color: var(--grey-color);
@@ -79,4 +83,30 @@ footer {
 .card-date {
     width: 6.5rem;
     text-align: end;
+}
+
+main section li a::before {
+    content: '•';
+    position: absolute;
+    left: 1.5rem;
+}
+main section li a div {
+    padding: 0rem 0.3rem;
+}
+main section li a[href] div {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+main section li a[href]::before {
+    content: url('./images/link-solid.svg');
+    width: 1rem;
+    height: 1rem;
+    position: absolute;
+    left: 1rem;
+}
+ul > li {
+    list-style: none;
+}
+.card-content-div {
+    position: relative;
 }

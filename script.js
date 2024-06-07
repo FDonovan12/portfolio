@@ -83,12 +83,12 @@ function add_project(projects_xml, balise_parent) {
 
         const card_content = balise_class('div', 'card_content d-flex', card);
 
-        const card_date = balise_class('div', 'card-date', card_content);
+        const card_date = balise_class('div', 'card-date col-2', card_content);
 
         const date_start = balise_add_xml(experience_xml, 'date_start', 'div', '', card_date);
         const date_end = balise_add_xml(experience_xml, 'date_end', 'div', '', card_date);
 
-        const card_content_div = balise_class('div', '', card_content);
+        const card_content_div = balise_class('div', 'col-10 card-content-div', card_content);
         const card_entreprise = balise_add_xml(
             experience_xml,
             'entreprise',
@@ -100,14 +100,18 @@ function add_project(projects_xml, balise_parent) {
         const card_content_list = balise_class('ul', 'card-content-list', card_content_div);
         experience_xml.querySelectorAll('projet').forEach((projet) => {
             const projet_li = balise_class('li', '', card_content_list);
-            const description_project = balise_add_xml(projet, 'description', 'a', '', projet_li);
+            const projet_a = balise_class('a', '', projet_li);
+            try {
+                projet_a.href = projet.querySelector('link_projet').textContent;
+            } catch (error) {}
+            const description_project = balise_add_xml(projet, 'description', 'div', '', projet_a);
         });
     });
 }
 
 function add_experience(xml) {
     const experience_list = document.createElement('section');
-    experience_list.className = 'container-fluid col-12 col-md-6 ps-2 realisation-experience';
+    experience_list.className = 'container-fluid col-12 col-lg-6 ps-2 realisation-experience';
 
     const h3 = balise_class('h3', '', experience_list);
     h3.textContent = 'Études et Formations';
@@ -120,7 +124,7 @@ function add_experience(xml) {
 
 function add_etude(xml) {
     const etude_list = document.createElement('section');
-    etude_list.className = 'container-fluid col-12 col-md-6 ps-2 realisation-etude';
+    etude_list.className = 'container-fluid col-12 col-lg-6 ps-2 realisation-etude';
 
     const h3 = balise_class('h3', '', etude_list);
     h3.textContent = 'Études et Formations';
