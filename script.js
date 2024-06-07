@@ -1,5 +1,6 @@
 function addHeader() {
     const headers = document.querySelector('header');
+
     let h1 = document.createElement('h1');
     h1.textContent = 'Donovan Ferreira';
     headers.appendChild(h1);
@@ -8,28 +9,25 @@ function addHeader() {
     headers.appendChild(h2);
 
     let nav = document.createElement('nav');
-    nav.className = 'd-flex justify-content-around gap-1 gap-md-3 gap-lg-5';
+    nav.className = 'd-flex justify-content-around row';
 
-    let index = document.createElement('a');
-    index.href = 'index.html';
-    index.innerHTML = 'Accueil';
-    nav.appendChild(index);
+    create_link_nav(nav, 'index.html', 'Accueil');
+    create_link_nav(nav, 'about.html', 'A propos');
+    create_link_nav(nav, 'realisation.html', 'Mes réalisations');
+    create_link_nav(nav, 'contact.html', 'Contact');
 
-    let about = document.createElement('a');
-    about.href = 'about.html';
-    about.innerHTML = 'A propos';
-    nav.appendChild(about);
-
-    let realisation = document.createElement('a');
-    realisation.href = 'realisation.html';
-    realisation.innerHTML = 'Mes réalisations';
-    nav.appendChild(realisation);
-
-    let contact = document.createElement('a');
-    contact.href = 'contact.html';
-    contact.innerHTML = 'Contact';
-    nav.appendChild(contact);
     headers.appendChild(nav);
+}
+
+function create_link_nav(nav, href, text) {
+    let balise = document.createElement('a');
+    balise.href = href;
+    balise.innerHTML = text;
+    balise.className = 'col-6 col-md-3';
+    if (document.title === text) {
+        balise.classList.add('active');
+    }
+    nav.appendChild(balise);
 }
 
 function addFooter() {
@@ -79,7 +77,6 @@ function add_project(projects_xml, balise_parent) {
         const card = balise_class('div', 'card', balise_parent);
 
         const h4 = balise_add_xml(experience_xml, 'nom', 'h4', '', card);
-        console.log('h4', experience_xml);
 
         const card_content = balise_class('div', 'card_content d-flex', card);
 
@@ -98,6 +95,25 @@ function add_project(projects_xml, balise_parent) {
         );
 
         const card_content_list = balise_class('ul', 'card-content-list', card_content_div);
+
+        card.addEventListener('mouseenter', () => {
+            const contentList = card.querySelector('.card-content-list');
+            contentList.classList.add('visible');
+            contentList.style.height = contentList.scrollHeight + 'px'; // Définir la hauteur réelle pour une animation fluide
+        });
+
+        card.addEventListener('mouseleave', () => {
+            const contentList = card.querySelector('.card-content-list');
+            contentList.style.height = '0'; // Revenir à hauteur 0 pour cacher
+            contentList.classList.remove('visible');
+        });
+
+        // card.addEventListener('transitionend', () => {
+        //     card.querySelector('.card-content-list').classList.toggle('d-none');
+        // });
+        // card.addEventListener('transitionend', () => {
+        //     card.querySelector('.card-content-list').classList.add('d-none');
+        // });
         experience_xml.querySelectorAll('projet').forEach((projet) => {
             const projet_li = balise_class('li', '', card_content_list);
             const projet_a = balise_class('a', '', projet_li);
@@ -109,37 +125,24 @@ function add_project(projects_xml, balise_parent) {
     });
 }
 
-function add_experience(xml) {
+function add_experience_etude(xml, selector, title) {
     const experience_list = document.createElement('section');
-    experience_list.className = 'container-fluid col-12 col-lg-6 ps-2 realisation-experience';
+    experience_list.className = 'container-fluid col-12 col-lg-6 ps-2';
 
     const h3 = balise_class('h3', '', experience_list);
-    h3.textContent = 'Études et Formations';
+    h3.textContent = title;
 
-    const experiences_xml = xml.querySelectorAll('experience');
+    const experiences_xml = xml.querySelectorAll(selector);
     add_project(experiences_xml, experience_list);
 
     return experience_list;
 }
 
-function add_etude(xml) {
-    const etude_list = document.createElement('section');
-    etude_list.className = 'container-fluid col-12 col-lg-6 ps-2 realisation-etude';
-
-    const h3 = balise_class('h3', '', etude_list);
-    h3.textContent = 'Études et Formations';
-
-    const etude_xml = xml.querySelectorAll('etude');
-    add_project(etude_xml, etude_list);
-
-    return etude_list;
-}
-
 // Fonction pour afficher les livres
 function displayRealisations(xml) {
     const realisation_list = document.querySelector('#realisation-list');
-    realisation_list.appendChild(add_experience(xml));
-    realisation_list.appendChild(add_etude(xml));
+    realisation_list.appendChild(add_experience_etude(xml, 'experience', 'Experience'));
+    realisation_list.appendChild(add_experience_etude(xml, 'etude', 'Études et Formations'));
 }
 
 window.addEventListener('load', () => {

@@ -1,13 +1,26 @@
 :root {
     --primary-color: brown;
+    --primary-color-back: rgb(155, 80, 80);
+    --primary-color: rgb(133, 0, 0);
+    /* --primary-color-back: rgb(255, 141, 141); */
     --grey-color: rgb(200, 200, 200);
 }
-*:hover {
-    transition-duration: 0.5s, 0.5s;
+* {
     transition-property: all;
+    transition: ease-in-out;
+    transition-duration: 0.8s;
 }
+html,
 body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+footer {
     background-color: var(--grey-color);
+    position: sticky;
+    bottom: 0;
+    margin-top: auto;
 }
 a {
     color: black !important;
@@ -15,10 +28,28 @@ a {
 }
 
 nav > a[href]:hover {
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-back);
 }
-.card[href]:hover {
+.card:hover {
     border: 0.2rem solid var(--primary-color) !important;
+}
+.card {
+    padding: 0.1em 0.3em;
+    margin: 0.5em 0em;
+    border: 0.2rem solid var(--grey-color) !important;
+    cursor: pointer;
+    position: relative;
+}
+
+.card-content-list {
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.card-content-list.visible {
+    opacity: 1;
+    visibility: visible;
 }
 li > a[href]:hover > div {
     background-color: var(--grey-color);
@@ -41,7 +72,7 @@ header > h2 {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: var(--primary-color);
+    background-color: var(--primary-color-back);
     font-weight: bold;
     padding: 0.1em;
 }
@@ -50,19 +81,15 @@ h3 {
     border-bottom: solid 2px;
     border-color: var(--primary-color);
     padding-bottom: 0.3em;
-    /* font-size: 1.17em; */
-    /* margin-bottom: 0.4em; */
 }
-/* nav {
-    display: flex;
-    gap: 3em;
-} */
+nav {
+    width: 80%;
+}
 nav > a {
     padding: 0.1em 0.7em;
     border-radius: 1em;
-}
-footer {
-    background-color: var(--grey-color);
+    margin-bottom: 0.5rem;
+    text-align: center;
 }
 .realisation {
     display: flex;
@@ -72,16 +99,10 @@ footer {
 .row {
     margin: 0em !important;
 }
-.card {
-    padding: 0.1em 0.3em;
-    margin: 0.5em 0em;
-    border: 0.2rem solid var(--grey-color) !important;
-}
 /* .card-entreprise {
     text-align: end;
 } */
 .card-date {
-    width: 6.5rem;
     text-align: end;
 }
 
@@ -107,6 +128,25 @@ main section li a[href]::before {
 ul > li {
     list-style: none;
 }
+.card-content {
+    max-width: 100%;
+}
 .card-content-div {
     position: relative;
+}
+
+.active {
+    background-color: var(--primary-color-back);
+}
+form {
+    padding: 1rem;
+}
+.form-group {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    padding: 0.2em;
+}
+label {
+    text-align: end;
+    padding: 0rem 0.3rem;
 }
