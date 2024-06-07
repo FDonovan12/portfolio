@@ -1,0 +1,73 @@
+:root {
+    --primary-color: brown;
+    --grey-color: rgb(200, 200, 200);
+}
+*:hover {
+    transition-duration: 0.5s;
+}
+a {
+    color: black !important;
+    text-decoration: none !important;
+}
+
+nav > a[href]:hover {
+    background-color: var(--primary-color);
+}
+.card[href]:hover {
+    border: 0.2rem solid var(--primary-color) !important;
+}
+li > a[href]:hover > div {
+    background-color: var(--grey-color);
+    border-radius: 0.3rem;
+}
+header {
+    background-color: var(--grey-color);
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+    gap: 0.5em;
+}
+header > h2 {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--primary-color);
+    font-weight: bold;
+    padding: 0.1em;
+}
+nav {
+    display: flex;
+    gap: 3em;
+}
+nav > a {
+    padding: 0.1em 0.7em;
+    border-radius: 1em;
+}
+footer {
+    background-color: var(--grey-color);
+}
+.realisation {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+.row {
+    margin: 0em !important;
+}
+.card {
+    padding: 0.1em 0.3em;
+    margin: 0.5em 0em;
+    border: 0.2rem solid var(--grey-color) !important;
+}
+.card-entreprise {
+    text-align: end;
+}
+.card-date {
+    width: 6.5rem;
+    text-align: end;
+}
