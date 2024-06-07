@@ -3,7 +3,8 @@
     --grey-color: rgb(200, 200, 200);
 }
 *:hover {
-    transition-duration: 0.5s;
+    transition-duration: 0.5s, 0.5s;
+    transition-property: all;
 }
 a {
     color: black !important;
@@ -29,7 +30,7 @@ header {
     justify-items: center;
     align-items: center;
     align-content: center;
-    gap: 0.5em;
+    /* gap: 0.5em; */
 }
 header > h2 {
     width: 100%;
@@ -40,10 +41,18 @@ header > h2 {
     font-weight: bold;
     padding: 0.1em;
 }
-nav {
+h3 {
+    color: var(--primary-color);
+    border-bottom: solid 2px;
+    border-color: var(--primary-color);
+    padding-bottom: 0.3em;
+    /* font-size: 1.17em; */
+    /* margin-bottom: 0.4em; */
+}
+/* nav {
     display: flex;
     gap: 3em;
-}
+} */
 nav > a {
     padding: 0.1em 0.7em;
     border-radius: 1em;
@@ -64,9 +73,9 @@ footer {
     margin: 0.5em 0em;
     border: 0.2rem solid var(--grey-color) !important;
 }
-.card-entreprise {
+/* .card-entreprise {
     text-align: end;
-}
+} */
 .card-date {
     width: 6.5rem;
     text-align: end;

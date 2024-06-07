@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE realisation [ <!ELEMENT realisation (experience*, etude*)>
+<!ELEMENT experience (nom, entreprise, date_start, date_end?, projet*)>
+<!ELEMENT etude (nom, entreprise, date_start, date_end?, projet*)>
+<!ELEMENT nom (#PCDATA)>
+<!ELEMENT entreprise (#PCDATA)>
+<!ELEMENT date_start (#PCDATA)>
+<!ELEMENT date_end (#PCDATA)>
+<!ELEMENT projet (description, link_projet?)>
+<!ELEMENT description (#PCDATA)>
+<!ELEMENT link_projet (#PCDATA)>
+]>
+<realisation>
+    <experience>
+        <nom>Développeur informatique (Stage, 5 mois)</nom>
+        <entreprise>Limos, Aurillac, France</entreprise>
+        <date_start>mai 2022</date_start>
+        <date_end>sept. 2022</date_end>
+        <projet>
+            <description>
+                Implémentation de différents types d'attaque sur une authentification par empreinte
+                digitale
+            </description>
+        </projet>
+        <projet>
+            <description>
+                Analyse des résultats des attaques avec modification des paramètres
+            </description>
+        </projet>
+    </experience>
+    <experience>
+        <nom>Développeur informatique (Stage, 2 mois)</nom>
+        <entreprise>Limos, Aubiere, France</entreprise>
+        <date_start>juin 2021</date_start>
+        <date_end>juil. 2021</date_end>
+        <projet>
+            <description>
+                Implémentation d'un chiffrement dans le framework créé par l'équipe
+            </description>
+        </projet>
+        <projet>
+            <description>
+                Apprentissage du langage Ruby ainsi que du framework de l'équipe
+            </description>
+        </projet>
+    </experience>
+    <experience>
+        <nom>Développeur informatique (Stage, 2 mois)</nom>
+        <entreprise>Limos, Aubiere, France</entreprise>
+        <date_start>juin 2020</date_start>
+        <date_end>juil. 2020</date_end>
+        <projet>
+            <description>
+                J'ai mis en place différents algorithmes de génération d'objets en lien avec les
+                graphes
+            </description>
+        </projet>
+    </experience>
+    <etude>
+        <nom>Concepteur, developpeur d'application</nom>
+        <entreprise>Human Booster, Clermont-Ferrand, France</entreprise>
+        <date_start>mai 2024</date_start>
+        <date_end>avril 2025</date_end>
+        <projet>
+            <description>Creation d'un portfolio</description>
+            <link_projet>https://github.com/FDonovan12/portfolio</link_projet>
+        </projet>
+    </etude>
+    <etude>
+        <nom>Formation développeur Java</nom>
+        <entreprise>Human Booster, Aubiere, France</entreprise>
+        <date_start>nov. 2023</date_start>
+        <date_end>janv. 2024</date_end>
+        <projet>
+            <description>Jeu d’échec sur terminal (Java)</description>
+            <link_projet>https://github.com/FDonovan12/portfolio</link_projet>
+        </projet>
+        <projet>
+            <description>Site d’avis sur des jeux vidéo (Java, HTML, CSS, JavaScript)</description>
+            <link_projet>https://github.com/FDonovan12/Cap_entreprise</link_projet>
+        </projet>
+    </etude>
+    <etude>
+        <nom>Master Genie Logiciel et Intégration d'Application</nom>
+        <entreprise>Isima, Aubiere, France</entreprise>
+        <date_start>sept. 2019</date_start>
+        <date_end>sept. 2022</date_end>
+        <projet>
+            <description>
+                Refactoring d'un programme et ajout de nouvelle fonctionnalité (java)
+            </description>
+        </projet>
+        <projet>
+            <description>
+                Modélisation et résolution d’un problème par heuristique (C++)
+            </description>
+            <link_projet>https://github.com/FDonovan12/vehicle_routing_problem</link_projet>
+        </projet>
+        <projet>
+            <description>Gestion de modèle 3D/2D (Python)</description>
+            <link_projet>https://github.com/FDonovan12/halfedge_mesh</link_projet>
+        </projet>
+        <projet>
+            <description>Résolution de taquin (Python)</description>
+            <link_projet>https://github.com/FDonovan12/taquin</link_projet>
+        </projet>
+    </etude>
+    <etude>
+        <nom>Licence d'Informatique</nom>
+        <entreprise>Université d'informatique, Aubiere, France</entreprise>
+        <date_start>sept. 2015</date_start>
+        <date_end>juin 2019</date_end>
+        <projet>
+            <description>Projet de reconnaissance d’image (python)</description>
+        </projet>
+        <projet>
+            <description>Simulation/Système multi-agent (java)</description>
+            <link_projet>https://github.com/FDonovan12/multi_agent_bubble</link_projet>
+        </projet>
+        <projet>
+            <description>Jeux vidéo 2D en réseau (socket tcp, C)</description>
+        </projet>
+        <projet>
+            <description>Création langage de programmation (antlr4)</description>
+            <link_projet>https://github.com/FDonovan12/programming_language</link_projet>
+        </projet>
+        <projet>
+            <description>Création d'une application de gestion (android)</description>
+        </projet>
+    </etude>
+</realisation>
