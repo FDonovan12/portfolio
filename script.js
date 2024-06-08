@@ -11,12 +11,76 @@ function addHeader() {
     let nav = document.createElement('nav');
     nav.className = 'd-flex justify-content-around row';
 
-    create_link_nav(nav, 'index.html', 'Accueil');
-    create_link_nav(nav, 'about.html', 'A propos');
-    create_link_nav(nav, 'realisation.html', 'Mes réalisations');
-    create_link_nav(nav, 'contact.html', 'Contact');
+    const file_map = {
+        'index.html': 'Accueil',
+        'about.html': 'A propos',
+        'realisation.html': 'Mes réalisations',
+        'contact.html': 'Contact',
+    };
+
+    const filename = get_file_from_url();
+    document.title = file_map[filename];
+
+    Object.keys(file_map).forEach((key) => {
+        create_link_nav(nav, key, file_map[key]);
+    });
+
+    const head = document.querySelector('head');
+    create_link_font_awesome(head);
+    create_link_bootstrap_style(head);
+    create_link_main_css(head);
+    create_link_bootstrap_script(head);
 
     headers.appendChild(nav);
+}
+
+function create_link_font_awesome(head) {
+    create_link(
+        head,
+        'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css',
+        'stylesheet'
+    );
+}
+function create_link_bootstrap_style(head) {
+    create_link(
+        head,
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css',
+        'stylesheet',
+        'sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH',
+        'anonymous'
+    );
+}
+function create_link_main_css(head) {
+    create_link(head, 'style.css', 'stylesheet');
+}
+function create_link_bootstrap_script(head) {
+    create_link(
+        head,
+        'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js',
+        'script',
+        'sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz',
+        'anonymous'
+    );
+}
+
+function create_link(head, href, rel, integrity, crossorigin) {
+    let balise = document.createElement('script');
+    balise.src = href;
+    if (rel === 'stylesheet') {
+        balise = document.createElement('link');
+        balise.rel = rel;
+        balise.href = href;
+    }
+    balise.integrity = integrity;
+    balise.crossOrigin = crossorigin;
+    head.appendChild(balise);
+}
+
+function get_file_from_url() {
+    const url = window.location.href;
+    const regexName = /^[\w\W]*\//;
+    const filename = url.replace(regexName, '');
+    return filename;
 }
 
 function create_link_nav(nav, href, text) {
@@ -141,8 +205,10 @@ function add_experience_etude(xml, selector, title) {
 // Fonction pour afficher les livres
 function displayRealisations(xml) {
     const realisation_list = document.querySelector('#realisation-list');
-    realisation_list.appendChild(add_experience_etude(xml, 'experience', 'Experience'));
-    realisation_list.appendChild(add_experience_etude(xml, 'etude', 'Études et Formations'));
+    if (realisation_list) {
+        realisation_list.appendChild(add_experience_etude(xml, 'experience', 'Experience'));
+        realisation_list.appendChild(add_experience_etude(xml, 'etude', 'Études et Formations'));
+    }
 }
 
 window.addEventListener('load', () => {
