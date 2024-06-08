@@ -219,4 +219,10 @@ window.addEventListener('load', () => {
         .catch(function (error) {
             console.error(error);
         });
+    setTimeout(() => {
+        document.querySelector('body').style.display = 'block';
+    }, '1');
+});
+window.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('body').style.display = 'none';
 });
