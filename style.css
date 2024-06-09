@@ -1,9 +1,8 @@
 :root {
-    --primary-color: brown;
     --primary-color-back: rgb(155, 80, 80);
     --primary-color: rgb(133, 0, 0);
-    /* --primary-color-back: rgb(255, 141, 141); */
-    --grey-color: rgb(200, 200, 200);
+    --color-back: rgb(232, 220, 202);
+    --gray-color: rgb(200, 200, 200);
 }
 * {
     transition-property: all;
@@ -15,130 +14,131 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    background-color: var(--color-back);
 }
-footer {
-    background-color: var(--grey-color);
-    position: sticky;
-    bottom: 0;
-    margin-top: auto;
+.row {
+    margin: 0em !important;
 }
 a {
     color: black !important;
     text-decoration: none !important;
 }
 
-nav > a[href]:hover {
-    background-color: var(--primary-color-back);
-}
-.card:hover {
-    border: 0.2rem solid var(--primary-color) !important;
-}
-.card {
-    padding: 0.1em 0.3em;
-    margin: 0.5em 0em;
-    border: 0.2rem solid var(--grey-color) !important;
-    cursor: pointer;
-    position: relative;
-}
-
-.card-content-list {
-    height: 0;
-    overflow: hidden;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.card-content-list.visible {
-    opacity: 1;
-    visibility: visible;
-}
-li > a[href]:hover > div {
-    background-color: var(--grey-color);
-    border-radius: 0.3rem;
-    color: var(--primary-color);
-}
+/* header */
 header {
-    background-color: var(--grey-color);
+    background-color: var(--gray-color);
     font-weight: bold;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    justify-items: center;
     align-items: center;
-    align-content: center;
-    /* gap: 0.5em; */
 }
 header > h2 {
     width: 100%;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     background-color: var(--primary-color-back);
     font-weight: bold;
+    color: white;
     padding: 0.1em;
 }
-h3 {
-    color: var(--primary-color);
-    border-bottom: solid 2px;
-    border-color: var(--primary-color);
-    padding-bottom: 0.3em;
-}
-nav {
+.nav-bar {
     width: 80%;
+    padding: 0.4rem;
 }
-nav > a {
+.nav-bar-link[href]:hover {
+    background-color: var(--primary-color-back);
+}
+.nav-bar-link {
     padding: 0.1em 0.7em;
     border-radius: 1em;
     margin-bottom: 0.5rem;
     text-align: center;
+}
+.nav-bar .active {
+    background-color: var(--primary-color-back);
+}
+
+/* footer */
+footer {
+    background-color: var(--gray-color);
+    position: sticky;
+    bottom: 0;
+    margin-top: auto;
+}
+
+/* Realisation */
+h3 {
+    color: var(--primary-color);
+    font-weight: bold;
+    border-bottom: solid 2px;
+    border-color: var(--primary-color);
+    padding-bottom: 0.3em;
+}
+h4 {
+    font-size: 1.25rem;
 }
 .realisation {
     display: flex;
     justify-content: space-between;
     align-items: start;
 }
-.row {
-    margin: 0em !important;
+.card {
+    padding: 0.1em 0.3em;
+    margin: 0.5em 0em;
+    border: 0.2rem solid var(--gray-color) !important;
+    cursor: pointer;
+    position: relative;
 }
-/* .card-entreprise {
-    text-align: end;
-} */
+.card:hover {
+    border: 0.2rem solid var(--primary-color) !important;
+}
+.card-content {
+    max-width: 100%;
+}
 .card-date {
     text-align: end;
 }
-
-main section li a::before {
+.card-content-list {
+    height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+}
+.card-content-list.visible {
+    opacity: 1;
+    visibility: visible;
+}
+.card-content-div {
+    position: relative;
+}
+.card-content-list-project a::before {
     content: '•';
     position: absolute;
     left: 1.5rem;
 }
-main section li a div {
+.card-content-list-project a div {
     padding: 0rem 0.3rem;
 }
-main section li a[href] div {
+.card-content-list-project a[href] div {
     color: var(--primary-color);
     text-decoration: underline;
 }
-main section li a[href]::before {
+.card-content-list-project a[href]::before {
     content: url('./images/link-solid.svg');
     width: 1rem;
     height: 1rem;
     position: absolute;
     left: 1rem;
 }
+.card-content-list-project > a[href]:hover > div {
+    background-color: var(--gray-color);
+    border-radius: 0.3rem;
+    color: var(--primary-color);
+}
 ul > li {
     list-style: none;
 }
-.card-content {
-    max-width: 100%;
-}
-.card-content-div {
-    position: relative;
-}
 
-.active {
-    background-color: var(--primary-color-back);
-}
+/* Contact */
 form {
     padding: 1rem;
 }
@@ -151,7 +151,17 @@ label {
     text-align: end;
     padding: 0.3rem;
 }
-
 #messageContact {
     max-height: 40vh;
+    min-height: fit-content;
+}
+
+/* About */
+.description {
+    border: 0.2rem solid var(--gray-color);
+    border-radius: 0.4rem;
+    padding: 0.2rem 0.4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
