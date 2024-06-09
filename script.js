@@ -163,21 +163,15 @@ function add_project(projects_xml, balise_parent) {
         card.addEventListener('mouseenter', () => {
             const contentList = card.querySelector('.card-content-list');
             contentList.classList.add('visible');
-            contentList.style.height = contentList.scrollHeight + 'px'; // Définir la hauteur réelle pour une animation fluide
+            contentList.style.height = contentList.scrollHeight + 'px';
         });
 
         card.addEventListener('mouseleave', () => {
             const contentList = card.querySelector('.card-content-list');
-            contentList.style.height = '0'; // Revenir à hauteur 0 pour cacher
+            contentList.style.height = '0';
             contentList.classList.remove('visible');
         });
 
-        // card.addEventListener('transitionend', () => {
-        //     card.querySelector('.card-content-list').classList.toggle('d-none');
-        // });
-        // card.addEventListener('transitionend', () => {
-        //     card.querySelector('.card-content-list').classList.add('d-none');
-        // });
         experience_xml.querySelectorAll('projet').forEach((projet) => {
             const projet_li = balise_class('li', '', card_content_list);
             const projet_a = balise_class('a', '', projet_li);
@@ -211,6 +205,18 @@ function displayRealisations(xml) {
     }
 }
 
+function adjustHeight(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+}
+function message_height() {
+    const textarea = document.getElementById('messageContact');
+    adjustHeight(textarea);
+    textarea.addEventListener('input', function () {
+        adjustHeight(this);
+    });
+}
+
 window.addEventListener('load', () => {
     addHeader();
     addFooter();
@@ -219,9 +225,10 @@ window.addEventListener('load', () => {
         .catch(function (error) {
             console.error(error);
         });
+    message_height();
     setTimeout(() => {
         document.querySelector('body').style.display = 'block';
-    }, '1');
+    }, '50');
 });
 window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('body').style.display = 'none';

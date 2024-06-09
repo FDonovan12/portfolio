@@ -143,11 +143,15 @@ form {
     padding: 1rem;
 }
 .form-group {
-    display: grid;
-    grid-template-columns: 2fr 10fr;
+    /* display: grid;
+    grid-template-columns: 2fr 10fr; */
     padding: 0.2em;
 }
 label {
     text-align: end;
-    padding: 0rem 0.3rem;
+    padding: 0.3rem;
+}
+
+#messageContact {
+    max-height: 40vh;
 }
