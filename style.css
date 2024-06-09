@@ -5,7 +5,6 @@
     --gray-color: rgb(200, 200, 200);
 }
 * {
-    transition-property: all;
     transition: ease-in-out;
     transition-duration: 0.8s;
 }

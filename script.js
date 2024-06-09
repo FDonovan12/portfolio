@@ -53,6 +53,7 @@ function addHeadContent() {
     createLinkBoostrapStyle(head);
     createLinkmainCSS(head);
     createLinkBoostrapScript(head);
+    // createLinkFontGoogle(head);
 }
 function createMetaTag(head, name, content) {
     const metaViewport = baliseClass('meta', '', head);
@@ -99,10 +100,19 @@ function createLinkBoostrapScript(head) {
         'anonymous'
     );
 }
+function createLinkFontGoogle(head) {
+    createLink(head, 'https://fonts.googleapis.com', 'preconnect');
+    createLink(head, 'https://fonts.gstatic.com', 'preconnect');
+    createLink(
+        head,
+        'https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&display=swap',
+        'stylesheet'
+    );
+}
 function createLink(head, href, rel, integrity, crossorigin) {
     let balise = document.createElement('script');
     balise.src = href;
-    if (rel === 'stylesheet') {
+    if (['stylesheet', 'preconnect'].includes(rel)) {
         balise = document.createElement('link');
         balise.rel = rel;
         balise.href = href;
