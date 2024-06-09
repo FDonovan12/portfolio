@@ -221,10 +221,6 @@ function addProject(projects_xml, balise_parent) {
     });
 }
 
-function adjustHeight(el) {
-    el.style.height = 'auto';
-    el.style.height = el.scrollHeight + 'px';
-}
 function messageHeight() {
     const textarea = document.getElementById('messageContact');
     if (textarea) {
@@ -233,4 +229,8 @@ function messageHeight() {
             adjustHeight(this);
         });
     }
+}
+function adjustHeight(el) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
 }

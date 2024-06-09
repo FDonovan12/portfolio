@@ -157,11 +157,14 @@ label {
 }
 
 /* About */
-.description {
+.about {
     border: 0.2rem solid var(--gray-color);
     border-radius: 0.4rem;
     padding: 0.2rem 0.4rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+.about-contact a {
+    text-decoration: underline !important;
 }
