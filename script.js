@@ -120,9 +120,9 @@ function createLinkNav(nav, href, text) {
     }
 }
 function getFileFromUrl() {
-    const url = window.location.href;
+    const pathname = window.location.pathname;
     const regexName = /^[\w\W]*\//;
-    const filename = url.replace(regexName, '');
+    const filename = pathname.replace(regexName, '');
     return filename;
 }
 
@@ -130,7 +130,7 @@ function addFooter() {
     const footer = document.getElementsByTagName('footer')[0];
     let div = document.createElement('div');
     let span = document.createElement('span');
-    span.innerHTML = 'Copyright © 2024 Oui. Tous droits réservés.';
+    span.innerHTML = 'Copyright © 2024 Donovan Ferreira. Tous droits réservés.';
     div.appendChild(span);
     footer.appendChild(div);
 }
@@ -232,5 +232,6 @@ function messageHeight() {
 }
 function adjustHeight(el) {
     el.style.height = 'auto';
-    el.style.height = el.scrollHeight + 'px';
+
+    el.style.height = Math.max(el.scrollHeight, 100) + 'px';
 }

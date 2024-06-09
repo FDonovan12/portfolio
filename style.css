@@ -91,9 +91,6 @@ h4 {
 .card:hover {
     border: 0.2rem solid var(--primary-color) !important;
 }
-.card-content {
-    max-width: 100%;
-}
 .card-date {
     text-align: end;
 }
@@ -142,9 +139,10 @@ ul > li {
 form {
     padding: 1rem;
 }
+form > button {
+    margin: 0.5rem 1rem;
+}
 .form-group {
-    /* display: grid;
-    grid-template-columns: 2fr 10fr; */
     padding: 0.2em;
 }
 label {
@@ -152,12 +150,14 @@ label {
     padding: 0.3rem;
 }
 #messageContact {
+    height: 200px;
     max-height: 40vh;
     min-height: fit-content;
 }
 
 /* About */
-.about {
+.about,
+.description {
     border: 0.2rem solid var(--gray-color);
     border-radius: 0.4rem;
     padding: 0.2rem 0.4rem;
