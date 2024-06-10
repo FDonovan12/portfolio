@@ -24,22 +24,22 @@ const file_map = {
     'contact.html': 'Contact',
 };
 
-function createBaliseWithParent(name_balise, class_balise, balise_parent, content) {
-    const balise = document.createElement(name_balise);
-    balise.className = class_balise;
-    if (balise_parent) {
-        balise_parent.appendChild(balise);
+function createTagWithParent(name_tag, class_tag, tag_parent, content) {
+    const tag = document.createElement(name_tag);
+    tag.className = class_tag;
+    if (tag_parent) {
+        tag_parent.appendChild(tag);
     } else {
-        console.log('else', balise_parent);
+        console.log('else', tag_parent);
     }
-    balise.textContent = content;
-    return balise;
+    tag.textContent = content;
+    return tag;
 }
 
 function addHeadContent() {
     const head = document.querySelector('head');
 
-    const metaCharset = createBaliseWithParent('meta', '', head);
+    const metaCharset = createTagWithParent('meta', '', head);
     metaCharset.setAttribute('charset', 'utf-8');
 
     const metaViewport = createMetaTag(head, 'viewport', 'width=device-width, initial-scale=1.0');
@@ -56,16 +56,16 @@ function addHeadContent() {
     // createLinkFontGoogle(head);
 }
 function createMetaTag(head, name, content) {
-    const metaViewport = createBaliseWithParent('meta', '', head);
+    const metaViewport = createTagWithParent('meta', '', head);
     metaViewport.name = name;
     metaViewport.content = content;
 }
 function addHeader() {
     const headers = document.querySelector('header');
 
-    let h1 = createBaliseWithParent('h1', '', headers, 'Donovan Ferreira');
-    let h2 = createBaliseWithParent('h2', '', headers, "Developpeur d'application");
-    let nav = createBaliseWithParent('nav', 'nav-bar row row-cols-2 row-cols-md-4', headers);
+    let h1 = createTagWithParent('h1', '', headers, 'Donovan Ferreira');
+    let h2 = createTagWithParent('h2', '', headers, "Developpeur d'application");
+    let nav = createTagWithParent('nav', 'nav-bar row row-cols-2 row-cols-md-4', headers);
 
     Object.keys(file_map).forEach((key) => {
         createLinkNav(nav, key, file_map[key]);
@@ -110,20 +110,20 @@ function createLinkFontGoogle(head) {
     );
 }
 function createLink(head, href, rel, integrity, crossorigin) {
-    let balise = document.createElement('script');
-    balise.src = href;
+    let tag = document.createElement('script');
+    tag.src = href;
     if (['stylesheet', 'preconnect'].includes(rel)) {
-        balise = document.createElement('link');
-        balise.rel = rel;
-        balise.href = href;
+        tag = document.createElement('link');
+        tag.rel = rel;
+        tag.href = href;
     }
-    balise.integrity = integrity;
-    balise.crossOrigin = crossorigin;
-    head.appendChild(balise);
+    tag.integrity = integrity;
+    tag.crossOrigin = crossorigin;
+    head.appendChild(tag);
 }
 
 function createLinkNav(nav, href, text) {
-    let link = createBaliseWithParent('a', 'nav-bar-link', nav, text);
+    let link = createTagWithParent('a', 'nav-bar-link', nav, text);
     link.href = href;
     if (document.title === text) {
         link.classList.add('active');
@@ -167,7 +167,7 @@ function addExperienceEtude(xml, selector, title) {
     const experience_list = document.createElement('section');
     experience_list.className = 'container-fluid col-12 col-lg-6 ps-2';
 
-    const h3 = createBaliseWithParent('h3', '', experience_list, title);
+    const h3 = createTagWithParent('h3', '', experience_list, title);
 
     const experiences_xml = xml.querySelectorAll(selector);
     addProject(experiences_xml, experience_list);
@@ -175,34 +175,34 @@ function addExperienceEtude(xml, selector, title) {
     return experience_list;
 }
 
-function createBaliseFromXml(xml, name_selector, name_balise, class_balise, balise_parent) {
-    balise = createBaliseWithParent(
-        name_balise,
-        class_balise,
-        balise_parent,
+function createTagFromXml(xml, name_selector, name_tag, class_tag, tag_parent) {
+    tag = createTagWithParent(
+        name_tag,
+        class_tag,
+        tag_parent,
         xml.querySelector(name_selector).textContent
     );
-    return balise;
+    return tag;
 }
-function addProject(projects_xml, balise_parent) {
+function addProject(projects_xml, tag_parent) {
     projects_xml.forEach((experience_xml) => {
-        const card = createBaliseWithParent('div', 'card', balise_parent);
+        const card = createTagWithParent('div', 'card', tag_parent);
 
-        const h4 = createBaliseFromXml(experience_xml, 'nom', 'h4', '', card);
+        const h4 = createTagFromXml(experience_xml, 'nom', 'h4', '', card);
 
-        const card_content = createBaliseWithParent('div', 'card-content d-flex', card);
+        const card_content = createTagWithParent('div', 'card-content d-flex', card);
 
-        const card_date = createBaliseWithParent('div', 'card-content-date col-2', card_content);
+        const card_date = createTagWithParent('div', 'card-content-date col-2', card_content);
 
-        const date_start = createBaliseFromXml(experience_xml, 'date_start', 'div', '', card_date);
-        const date_end = createBaliseFromXml(experience_xml, 'date_end', 'div', '', card_date);
+        const date_start = createTagFromXml(experience_xml, 'date_start', 'div', '', card_date);
+        const date_end = createTagFromXml(experience_xml, 'date_end', 'div', '', card_date);
 
-        const card_content_div = createBaliseWithParent(
+        const card_content_div = createTagWithParent(
             'div',
             'col-10 card-content-div',
             card_content
         );
-        const card_entreprise = createBaliseFromXml(
+        const card_entreprise = createTagFromXml(
             experience_xml,
             'entreprise',
             'div',
@@ -210,7 +210,7 @@ function addProject(projects_xml, balise_parent) {
             card_content_div
         );
 
-        const card_content_list = createBaliseWithParent(
+        const card_content_list = createTagWithParent(
             'ul',
             'card-content-div-list',
             card_content_div
@@ -229,12 +229,12 @@ function addProject(projects_xml, balise_parent) {
         });
 
         experience_xml.querySelectorAll('projet').forEach((projet) => {
-            const projet_li = createBaliseWithParent(
+            const projet_li = createTagWithParent(
                 'li',
                 'card-content-div-list-project',
                 card_content_list
             );
-            const projet_a = createBaliseWithParent(
+            const projet_a = createTagWithParent(
                 'a',
                 'card-content-div-list-project-link',
                 projet_li
@@ -242,7 +242,7 @@ function addProject(projects_xml, balise_parent) {
             try {
                 projet_a.href = projet.querySelector('link_projet').textContent;
             } catch (error) {}
-            const description_project = createBaliseFromXml(
+            const description_project = createTagFromXml(
                 projet,
                 'description',
                 'div',
