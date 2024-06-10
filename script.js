@@ -139,6 +139,7 @@ function getFileFromUrl() {
 function addFooter() {
     const footer = document.getElementsByTagName('footer')[0];
     let div = document.createElement('div');
+    div.className = 'footer';
     let span = document.createElement('span');
     span.innerHTML = 'Copyright © 2024 Donovan Ferreira. Tous droits réservés.';
     div.appendChild(span);
@@ -265,5 +266,5 @@ function messageHeight() {
 function adjustHeight(el) {
     el.style.height = 'auto';
 
-    el.style.height = Math.max(el.scrollHeight, 100) + 'px';
+    el.style.height = Math.max(el.scrollHeight, 60) + 'px';
 }
