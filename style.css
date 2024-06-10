@@ -156,7 +156,8 @@ label {
 
 /* About */
 .about,
-.description {
+.description,
+.formular {
     border: 0.2rem solid var(--gray-color);
     border-radius: 0.4rem;
     padding: 0.2rem 0.4rem;
