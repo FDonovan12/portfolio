@@ -161,6 +161,9 @@ label {
     flex-direction: column;
     gap: 1rem;
 }
+p {
+    margin: 0em;
+}
 .about-contact a {
     text-decoration: underline !important;
 }
