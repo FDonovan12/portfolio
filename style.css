@@ -150,7 +150,7 @@ label {
 }
 #messageContact {
     height: 200px;
-    max-height: 40vh;
+    max-height: 30vh;
     min-height: fit-content;
 }
 
