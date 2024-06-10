@@ -90,42 +90,42 @@ h4 {
 .card:hover {
     border: 0.2rem solid var(--primary-color) !important;
 }
-.card-date {
+.card-content-date {
     text-align: end;
 }
-.card-content-list {
+.card-content-div {
+    position: relative;
+}
+.card-content-div-list {
     height: 0;
     overflow: hidden;
     opacity: 0;
     visibility: hidden;
 }
-.card-content-list.visible {
+.card-content-div-list.visible {
     opacity: 1;
     visibility: visible;
 }
-.card-content-div {
-    position: relative;
-}
-.card-content-list-project a::before {
+.card-content-div-list-project a::before {
     content: '•';
     position: absolute;
     left: 1.5rem;
 }
-.card-content-list-project a div {
+.card-content-div-list-project a div {
     padding: 0rem 0.3rem;
 }
-.card-content-list-project a[href] div {
+.card-content-div-list-project a[href] div {
     color: var(--primary-color);
     text-decoration: underline;
 }
-.card-content-list-project a[href]::before {
+.card-content-div-list-project a[href]::before {
     content: url('./images/link-solid.svg');
     width: 1rem;
     height: 1rem;
     position: absolute;
     left: 1rem;
 }
-.card-content-list-project > a[href]:hover > div {
+.card-content-div-list-project > a[href]:hover > div {
     background-color: var(--gray-color);
     border-radius: 0.3rem;
     color: var(--primary-color);
