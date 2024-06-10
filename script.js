@@ -159,7 +159,7 @@ async function loadXMLDoc(filename) {
 function displayRealisations(xml) {
     const realisation_list = document.querySelector('#realisation-list');
     if (realisation_list) {
-        realisation_list.appendChild(addExperienceEtude(xml, 'experience', 'Experience'));
+        realisation_list.appendChild(addExperienceEtude(xml, 'experience', 'Experiences'));
         realisation_list.appendChild(addExperienceEtude(xml, 'etude', 'Études et Formations'));
     }
 }
